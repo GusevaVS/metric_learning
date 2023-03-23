@@ -1,0 +1,12 @@
+{"train_path": "..\\..\\metric_learning\\data\\train\\",
+"val_path": "..\\..\\metric_learning\\data\\validation\\",
+"checkpoint_path": ".\\checkpoint",
+"epochs": [3, 7, 12, 16, 20],
+"seed": 42,
+"device": "cpu",
+"album_flag": 1,
+"batch_size": 8,
+"weight_decay": 1e-5,
+"loss_optim_lr": 1e-4,
+"optim_lr": 3e-4
+}

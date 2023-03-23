@@ -1,0 +1,5 @@
+{"model_pth": "..\\..\\metric_learning\\src\\models\\best_model.pth",
+"path_train_csv": "..\\..\\metric_learning\\data\\train.csv",
+"image_path": "..\\..\\metric_learning\\data\\test\\**.jpg",
+"predict_pth": ".\\predict",
+"k_nearest_neighbors":  10}
