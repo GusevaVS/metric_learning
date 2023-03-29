@@ -25,7 +25,8 @@ def main():
     data_train = d_c.load_data(config["train_path"], le_encoder=le, albumentate=bool(config['album_flag']))
     data_train.to_csv('..\\..\\hw_metric_learning\\data\\train.csv', index=False)  # запись .csv для облегчения работы predict.py
     data_val = d_c.load_data(config["val_path"], le_encoder=le)
-    best_model = float('-inf')
+    best_accuracy = float('-inf')
+    best_model = ''
     for l, params in loss.losses.items():
         train_dataloader = d_c.dataloader_creator(data_train, batch_size=config['batch_size'], flag_train=True,
                                                   is_shuffle=True, is_droplast=True,
@@ -52,8 +53,9 @@ def main():
         accuracy = model.fit_model(model_resnet18, optimizer, loss_func, str(l), loss_optimizer, train_dataloader,
                                    val_dataloader, config['epochs'], device=device,
                                    checkpoint_path=config['checkpoint_path'])
-        if accuracy > best_model:
+        if accuracy > best_accuracy:
             best_model = model_resnet18
+            best_accuracy = accuracy
     torch.save(best_model, '..\\..\\metric_learning\\src\\models\\best_model.pth')
 
 
